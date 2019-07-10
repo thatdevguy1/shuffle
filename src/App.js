@@ -1,22 +1,36 @@
 import React, {Component} from 'react';
-import Chatbox from './ChatBox/Chatbox'
-import Messagebox from './MessageBox/Messagebox'
+import Header from "./components/Header/Header"
+import Wheel from "./components/Wheel/Wheel"
+import Option from "./components/Option/Option"
 import './App.css';
 
 class App extends Component {
   state = {
-    messages : [
-      "Toronto in 6!",
-      "Lets go raps",
-      "Something something raps something something"
-    ]
+    loggedIn: true,
+    animate: false,
+    spin: false
   };
+
+  spinHandler = () => {
+    this.setState({
+      spin: true
+    });
+    setTimeout(()=> {
+      this.setState({
+        spin:false
+      }); 
+    }, 8000);
+  }
 
   render(){
     return( 
       <div className="App">
-        <Chatbox></Chatbox>
-        <Messagebox value={ this.state.messages }></Messagebox>
+        <Header />
+        <Wheel spin={this.state.spin} />
+        <div className="botWrapper">
+          <Option />
+          <button id="spinBtn" className="spin" onClick={ this.spinHandler } >Spin!</button>
+        </div>
       </div>
     )};
 }

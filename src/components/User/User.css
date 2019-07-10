@@ -1,0 +1,16 @@
+.icon{
+    width:50px;
+    height:50px;
+}
+
+.green{
+    background-color: rgb(10, 110, 10);
+}
+
+.pink{
+    background-color: rgb(221, 92, 141);
+}
+
+.black{
+    background-color: rgb(7, 7, 7);
+}

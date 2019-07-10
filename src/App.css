@@ -1,33 +1,23 @@
 .App {
+  margin:0;
+  padding:0;
   text-align: center;
+  background-color: rgb(189, 198, 247);
+  height:100vh;
+  border: solid 2px rgb(35, 33, 107);
+  border-radius: 5px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.spin{
+  position:relative;
+  border:solid 1px black;
+  border-radius: 50%;
+  background: rgb(179, 19, 19);
+  padding:20px 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.botWrapper{
+  display:flex;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
