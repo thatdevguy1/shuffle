@@ -1,16 +1,29 @@
 .wheel{
+    position:relative;
     border: solid 2px black;
     margin: 5px auto;
-    width:720px;
+    width:728px;
     overflow:hidden;
+}
+
+.selectionBox{
+    position:absolute;
+    left:50%;
+    top: -1px;
+    transform: translateX(-50%);
+    border:solid 4px rgb(255, 238, 3);
+    width:54px;
+    height:50px;
+    z-index: 1000;
 }
 
 .iconWrap{
     position:relative;
     display: flex;
+    
 }
 
-.iconWrapAnimate{
+/* .iconWrapAnimate{
     animation-name: spin;
     animation-duration: 3s;
     animation-timing-function: ease-in-out;
@@ -26,7 +39,7 @@
         transform:translateX(-200%);
       
     }
-}
+} */
 
 .icon{
     width:50px;
