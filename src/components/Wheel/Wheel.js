@@ -16,6 +16,12 @@ class Wheel extends React.Component{
         this.randomIcons();
     }
 
+    componentWillReceiveProps(nextProp){
+        if(nextProp.spin === false){
+            this.randomIcons();
+        }
+    }
+
     randomIcons = () => {
         let tempArray = [];
         for(var i = 0; i < 13; i++){
@@ -28,9 +34,9 @@ class Wheel extends React.Component{
         let winningIconPosition;
 
         if(winningIcon > 0){
-            winningIconPosition = 1848 + (winningIcon * 56);
+            winningIconPosition = 3304 + (winningIcon * 56);
         }else{
-            winningIconPosition = 1848;
+            winningIconPosition = 3304;
         }
         
         console.log(`winning Icon ${winningIcon} `);
@@ -44,8 +50,9 @@ class Wheel extends React.Component{
     }
 
     render(){
+
         var styles = {
-                transition: '3s ease-in-out',
+                transition: '4s cubic-bezier(.68,.21,.01,1.1)',
                 transform: `translateX(-${this.state.winningIconPosition}px)`
             };
 
@@ -59,6 +66,7 @@ class Wheel extends React.Component{
             <div className="wheel">
                 <div className="selectionBox" ></div>
                 <div className={spin.join(" ")} style={(this.props.spin) ? styles : {}} >
+                    {iconElements}
                     {iconElements}
                     {iconElements}
                     {iconElements}
