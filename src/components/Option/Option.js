@@ -7,13 +7,16 @@ const Option = (props)=>{
         <div className="option">
             <h3>Choose Your Lucky Color</h3>
             <div className="greenOption">
-                <span>Green</span>
+                <input type="radio" id="green" name="optionSelect" onClick={()=>{props.click("green")}} value="green" />
+                <label>Green</label>
             </div>
-            <div className="blackOptiom">
-                   <span>Black</span>
+            <div className="blackOption">
+                <input type="radio" id="black" name="optionSelect" onClick={()=>{props.click("black")}} value="black" />
+                <label>Black</label>
             </div>
             <div className="pinkOption">  
-                <span>Pink</span>
+                <input type="radio" id="pink" name="optionSelect" onClick={()=>{props.click("pink")}} value="pink" />
+                <label>Pink</label>
             </div>
         </div>
     );

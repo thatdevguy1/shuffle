@@ -12,16 +12,27 @@ class Wheel extends React.Component{
         winningIconPosition: 0
     };
 
+    //set the game up when the component mounts
     componentWillMount(){
         this.randomIcons();
     }
 
+    //reset the game when props are recieved, This will be triggered when the spin state changes in the app.js
+    //checks to see if the state change indicates that the animation is over which in turn reveals the winning color
     componentWillReceiveProps(nextProp){
-        if(nextProp.spin === false){
+        if(nextProp.spin === false && nextProp.spin !== this.props.spin){
             this.randomIcons();
         }
-    }
+    } 
 
+    // shouldComponentUpdate(nextProps){
+    //     if(nextProp)
+    // }
+
+    //creates a random array of colors based on numbers from 0 - 3 which coincides with colors.
+    //a winning color is predetermined by this function
+    //the winning colors position is determined for the spin animation to correctly spin to the right position
+    //everything is saved in state
     randomIcons = () => {
         let tempArray = [];
         for(var i = 0; i < 13; i++){
@@ -50,7 +61,8 @@ class Wheel extends React.Component{
     }
 
     render(){
-
+        //styles is used for a dynamic transform value. This lets the animation to spin to a different position based on 
+        //the predetermined position
         var styles = {
                 transition: '4s cubic-bezier(.68,.21,.01,1.1)',
                 transform: `translateX(-${this.state.winningIconPosition}px)`
@@ -58,6 +70,7 @@ class Wheel extends React.Component{
 
         var spin = ["iconWrap", ""];
         
+        //genereates the icons based on the random array of colors
         let iconElements = this.state.wheelColors.map((value)=>{
             return <Icons key={uuidv()} className = "icon" userName = {value} />
         });

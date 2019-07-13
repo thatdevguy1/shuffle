@@ -8,19 +8,31 @@ class App extends Component {
   state = {
     loggedIn: true,
     animate: false,
-    spin: false
+    spin: false,
+    colorChoice: ""
   };
 
-  spinHandler = () => {
+  //Sets the state of the users choice of color
+  optionHandler = (colorChoice) => {
     this.setState({
-      spin: true
-    });
-    setTimeout(()=> {
+      colorChoice: colorChoice
+    }, ()=>{console.log(this.state.colorChoice)});
+  };
+
+  //handles the spin state to control animation. Checks if animation is in progress to stop the user from pressing the spin button
+  //while the action is in progress
+  spinHandler = () => {
+      if(!this.state.spin === true){
       this.setState({
-        spin:false
-      }); 
-    }, 8000);
-  }
+        spin: true
+      });
+      setTimeout(()=> {
+        this.setState({
+          spin:false
+        }); 
+      }, 8000);
+    };
+  };
 
   render(){
     return( 
@@ -28,7 +40,7 @@ class App extends Component {
         <Header />
         <Wheel spin={this.state.spin} />
         <div className="botWrapper">
-          <Option />
+          <Option click={this.optionHandler} />
           <button id="spinBtn" className="spin" onClick={ this.spinHandler } >Spin!</button>
         </div>
       </div>
