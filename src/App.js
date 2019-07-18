@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from "./components/Header/Header"
 import Wheel from "./components/Wheel/Wheel"
 import Option from "./components/Option/Option"
+import Results from "./components/Results/Results"
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,19 @@ class App extends Component {
     loggedIn: true,
     animate: false,
     spin: false,
-    colorChoice: ""
+    colorChoice: "",
+    winningIcon: "",
+    win: false,
+    showMsg: false
+  };
+
+  winnerHandler = (winningIcon) => {
+    this.setState({
+      winningIcon: winningIcon
+    }, ()=>{
+      
+    });
+    console.log(`the winning icon is ${winningIcon}`)
   };
 
   //Sets the state of the users choice of color
@@ -26,10 +39,15 @@ class App extends Component {
       this.setState({
         spin: true
       });
+      setTimeout(()=>{
+        this.state.winningIcon === this.state.colorChoice ? this.setState({win:true, showMsg: true}) : this.setState({win:false, showMsg: true});
+
+      }, 4000);
       setTimeout(()=> {
         this.setState({
-          spin:false
-        }); 
+          spin:false,
+          showMsg: false
+        });
       }, 8000);
     };
   };
@@ -38,11 +56,12 @@ class App extends Component {
     return( 
       <div className="App">
         <Header />
-        <Wheel spin={this.state.spin} />
+        <Wheel spin={this.state.spin} colorChoice={this.state.colorChoice} winningInfo={this.winnerHandler}/>
         <div className="botWrapper">
           <Option click={this.optionHandler} />
           <button id="spinBtn" className="spin" onClick={ this.spinHandler } >Spin!</button>
         </div>
+        <Results win={this.state.win} showMsg={this.state.showMsg}/>
       </div>
     )};
 }

@@ -1,0 +1,22 @@
+.showNone{
+    opacity:0;
+}
+
+.showResult{
+    animation-name: resultAnimate;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes resultAnimate{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
